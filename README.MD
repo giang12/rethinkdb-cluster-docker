@@ -3,18 +3,20 @@
 [![docker pulls](https://img.shields.io/docker/pulls/zen12/rethinkdb-cluster.svg)](https://hub.docker.com/r/zen12/rethinkdb-cluster/)
 [![docker stars](https://img.shields.io/docker/stars/zen12/rethinkdb-cluster.svg)](https://hub.docker.com/r/zen12/rethinkdb-cluster/)
 
-Creates a [Docker](https://www.docker.com)-based [RethinkDB](https://www.rethinkdb.com/)
-cluster with [docker swarm](https://docs.docker.com/get-started/part5/).
+Creates a [Docker](https://www.docker.com)-based [RethinkDB](https://www.rethinkdb.com/) cluster with [docker swarm](https://docs.docker.com/get-started/part5/)
 
 # Get started
 
 1. Make it run
+
 ```
 docker stack deploy rethinkdb-cluster -c docker-compose.yml
 ```
 2. Go into the rethink ui (http://localhost:8081), add a database called `clustertest` and a table called `importantData`. Add a document containing anything into this table.
+
 ```
-r.dbCreate('clustertest').tableCreate('importantData')
+r.dbCreate('clustertest')
+r.db('clustertest').tableCreate('importantData')
 r.db('clustertest').table('importantData').insert({"ayyy":"lmao"})
 ```
 Now you can start terrorizing the system.
