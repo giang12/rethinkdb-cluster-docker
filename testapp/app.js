@@ -33,7 +33,7 @@ let count = 0;
 
 setInterval(() => {
   if (count > thresh) {
-    console.info("cluster is running normal, exitting testapp..");
+    console.info("cluster is running normally, exiting testapp..");
 
     return process.exit(0);
   }
