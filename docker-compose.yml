@@ -1,5 +1,9 @@
 version: "3"
 
+networks:
+  rethink-net:
+    driver: overlay
+
 volumes:
   rethinkdb1_data: {}
   rethinkdb2_data: {}
@@ -8,15 +12,15 @@ volumes:
   rethinkdb5_data: {}
 
 services:
-  nodeapp:
-    build: ./testapp
+  testapp:
+    image: zen12/rethinkdb-cluster:testapp
     networks:
       - rethink-net
     environment:
       - 'dbservers=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb4;rethinkdb5'
 
   rethinkdb1:
-    build: ./rethinkdb
+    image: zen12/rethinkdb-cluster
     environment:
       - "DBCLUSTERHOSTS=rethinkdb2;rethinkdb3;rethinkdb4;rethinkdb5"
       - "RETHINKARGS=--server-tag primary --server-name rethinkdb1 --bind all"
@@ -31,7 +35,7 @@ services:
       - 8081:8080
 
   rethinkdb2:
-    build: ./rethinkdb
+    image: zen12/rethinkdb-cluster
     environment:
       - "DBCLUSTERHOSTS=rethinkdb1;rethinkdb3;rethinkdb4;rethinkdb5"
       - "RETHINKARGS=--server-tag primary --server-name rethinkdb2 --bind all"
@@ -46,7 +50,7 @@ services:
       - 8082:8080
 
   rethinkdb3:
-    build: ./rethinkdb
+    image: zen12/rethinkdb-cluster
     environment:
       - "DBCLUSTERHOSTS=rethinkdb1;rethinkdb2;rethinkdb4;rethinkdb5"
       - "RETHINKARGS=--server-tag primary --server-name rethinkdb3 --bind all"
@@ -61,7 +65,7 @@ services:
       - 8083:8080
 
   rethinkdb4:
-    build: ./rethinkdb
+    image: zen12/rethinkdb-cluster
     environment:
       - "DBCLUSTERHOSTS=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb5"
       - "RETHINKARGS=--server-tag primary --server-name rethinkdb4 --bind all"
@@ -76,13 +80,13 @@ services:
       - 8084:8080
 
   rethinkdb5:
-    build: ./rethinkdb
+    image: zen12/rethinkdb-cluster
     environment:
       - "DBCLUSTERHOSTS=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb4"
       - "RETHINKARGS=--server-tag primary --server-name rethinkdb5 --bind all"
     hostname: rethinkdb5
     volumes:
-      - rethinkdb4_data:/data
+      - rethinkdb5_data:/data
     networks:
       - rethink-net
     ports:
@@ -90,6 +94,3 @@ services:
       - 28019:28015
       - 8085:8080
 
-networks:
-  rethink-net:
-    driver: bridge
