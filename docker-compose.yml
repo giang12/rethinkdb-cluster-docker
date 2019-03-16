@@ -5,11 +5,21 @@ networks:
     driver: overlay
 
 volumes:
-  rethinkdb1_data: /datavol/rethinkdb/db1
-  rethinkdb2_data: /datavol/rethinkdb/db2
-  rethinkdb3_data: /datavol/rethinkdb/db3
-  rethinkdb4_data: /datavol/rethinkdb/db4
-  rethinkdb5_data: /datavol/rethinkdb/db5
+  rethinkdb1_data:
+    external:
+      name: /datavol/rethinkdb/db1
+  rethinkdb2_data:
+    external:
+      name: /datavol/rethinkdb/db2
+  rethinkdb3_data:
+    external:
+      name: /datavol/rethinkdb/db3
+  rethinkdb4_data:
+    external:
+      name: /datavol/rethinkdb/db4
+  rethinkdb5_data:
+    external:
+      name: /datavol/rethinkdb/db5
 
 services:
   testapp:
