@@ -4,23 +4,6 @@ networks:
   rethink-net:
     driver: overlay
 
-volumes:
-  rethinkdb1_data:
-    external:
-      name: /datavol/rethinkdb/db1
-  rethinkdb2_data:
-    external:
-      name: /datavol/rethinkdb/db2
-  rethinkdb3_data:
-    external:
-      name: /datavol/rethinkdb/db3
-  rethinkdb4_data:
-    external:
-      name: /datavol/rethinkdb/db4
-  rethinkdb5_data:
-    external:
-      name: /datavol/rethinkdb/db5
-
 services:
   testapp:
     image: zen12/rethinkdb-cluster:testapp
@@ -36,7 +19,7 @@ services:
       - "RETHINKARGS=--server-tag primary --server-name rethinkdb1 --bind all"
     hostname: rethinkdb1
     volumes:
-      - rethinkdb1_data:/data
+      - /datavol/rethinkdb/db1:/data
     networks:
       - rethink-net
     ports:
@@ -51,7 +34,7 @@ services:
       - "RETHINKARGS=--server-tag primary --server-name rethinkdb2 --bind all"
     hostname: rethinkdb2
     volumes:
-      - rethinkdb2_data:/data
+      - /datavol/rethinkdb/db2:/data
     networks:
       - rethink-net
     ports:
@@ -66,7 +49,7 @@ services:
       - "RETHINKARGS=--server-tag primary --server-name rethinkdb3 --bind all"
     hostname: rethinkdb3
     volumes:
-      - rethinkdb3_data:/data
+      - /datavol/rethinkdb/db3:/data
     networks:
       - rethink-net
     ports:
@@ -81,7 +64,7 @@ services:
       - "RETHINKARGS=--server-tag primary --server-name rethinkdb4 --bind all"
     hostname: rethinkdb4
     volumes:
-      - rethinkdb4_data:/data
+      - /datavol/rethinkdb/db4:/data
     networks:
       - rethink-net
     ports:
@@ -96,7 +79,7 @@ services:
       - "RETHINKARGS=--server-tag primary --server-name rethinkdb5 --bind all"
     hostname: rethinkdb5
     volumes:
-      - rethinkdb5_data:/data
+      - /datavol/rethinkdb/db5:/data
     networks:
       - rethink-net
     ports:
