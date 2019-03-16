@@ -5,11 +5,11 @@ networks:
     driver: overlay
 
 volumes:
-  rethinkdb1_data: {}
-  rethinkdb2_data: {}
-  rethinkdb3_data: {}
-  rethinkdb4_data: {}
-  rethinkdb5_data: {}
+  rethinkdb1_data: /datavol/rethinkdb/db1
+  rethinkdb2_data: /datavol/rethinkdb/db2
+  rethinkdb3_data: /datavol/rethinkdb/db3
+  rethinkdb4_data: /datavol/rethinkdb/db4
+  rethinkdb5_data: /datavol/rethinkdb/db5
 
 services:
   testapp:
@@ -17,7 +17,7 @@ services:
     networks:
       - rethink-net
     environment:
-      - 'dbservers=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb4;rethinkdb5'
+      - "dbservers=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb4;rethinkdb5"
 
   rethinkdb1:
     image: zen12/rethinkdb-cluster
@@ -93,4 +93,3 @@ services:
       - 29019:29015
       - 28019:28015
       - 8085:8080
-
