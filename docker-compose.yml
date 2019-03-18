@@ -15,7 +15,7 @@ services:
   rethinkdb1:
     image: zen12/rethinkdb-cluster
     environment:
-      - "DBCLUSTERHOSTS=rethinkdb2;rethinkdb3;rethinkdb4;rethinkdb5"
+      - "JOIN=rethinkdb2;rethinkdb3;rethinkdb4;rethinkdb5"
       - "RETHINKARGS=--server-tag rethinkdb1 --server-name rethinkdb1 --bind all"
     hostname: rethinkdb1
     volumes:
@@ -23,14 +23,12 @@ services:
     networks:
       - rethink-net
     ports:
-      - 29015:29015
-      - 28015:28015
       - 8081:8080
 
   rethinkdb2:
     image: zen12/rethinkdb-cluster
     environment:
-      - "DBCLUSTERHOSTS=rethinkdb1;rethinkdb3;rethinkdb4;rethinkdb5"
+      - "JOIN=rethinkdb1;rethinkdb3;rethinkdb4;rethinkdb5"
       - "RETHINKARGS=--server-tag rethinkdb2 --server-name rethinkdb2 --bind all"
     hostname: rethinkdb2
     volumes:
@@ -38,14 +36,12 @@ services:
     networks:
       - rethink-net
     ports:
-      - 29016:29015
-      - 28016:28015
       - 8082:8080
 
   rethinkdb3:
     image: zen12/rethinkdb-cluster
     environment:
-      - "DBCLUSTERHOSTS=rethinkdb1;rethinkdb2;rethinkdb4;rethinkdb5"
+      - "JOIN=rethinkdb1;rethinkdb2;rethinkdb4;rethinkdb5"
       - "RETHINKARGS=--server-tag rethinkdb3 --server-name rethinkdb3 --bind all"
     hostname: rethinkdb3
     volumes:
@@ -53,14 +49,12 @@ services:
     networks:
       - rethink-net
     ports:
-      - 29017:29015
-      - 28017:28015
       - 8083:8080
 
   rethinkdb4:
     image: zen12/rethinkdb-cluster
     environment:
-      - "DBCLUSTERHOSTS=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb5"
+      - "JOIN=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb5"
       - "RETHINKARGS=--server-tag rethinkdb4 --server-name rethinkdb4 --bind all"
     hostname: rethinkdb4
     volumes:
@@ -68,14 +62,12 @@ services:
     networks:
       - rethink-net
     ports:
-      - 29018:29015
-      - 28018:28015
       - 8084:8080
 
   rethinkdb5:
     image: zen12/rethinkdb-cluster
     environment:
-      - "DBCLUSTERHOSTS=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb4"
+      - "JOIN=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb4"
       - "RETHINKARGS=--server-tag rethinkdb5 --server-name rethinkdb5 --bind all"
     hostname: rethinkdb5
     volumes:
@@ -83,6 +75,4 @@ services:
     networks:
       - rethink-net
     ports:
-      - 29019:29015
-      - 28019:28015
       - 8085:8080
