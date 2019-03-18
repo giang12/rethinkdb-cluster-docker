@@ -15,8 +15,8 @@ services:
   rethinkdb1:
     image: zen12/rethinkdb-cluster
     environment:
-      - "JOIN=rethinkdb1"
-      - "RETHINKARGS=--server-tag rethinkdb1 --server-name rethinkdb1 --bind all"
+      - "JOIN=rethinkdb1,rethinkdb2,rethinkdb3,rethinkdb4,rethinkdb5"
+      - "RETHINKARGS=--server-tag rethinkdb1 --server-name rethinkdb1"
     hostname: rethinkdb1
     volumes:
       - /datavol/rethinkdb/db1:/data
@@ -28,8 +28,8 @@ services:
   rethinkdb2:
     image: zen12/rethinkdb-cluster
     environment:
-      - "JOIN=rethinkdb1"
-      - "RETHINKARGS=--server-tag rethinkdb2 --server-name rethinkdb2 --bind all"
+      - "JOIN=rethinkdb1,rethinkdb2,rethinkdb3,rethinkdb4,rethinkdb5"
+      - "RETHINKARGS=--server-tag rethinkdb2 --server-name rethinkdb2"
     hostname: rethinkdb2
     volumes:
       - /datavol/rethinkdb/db2:/data
@@ -41,8 +41,8 @@ services:
   rethinkdb3:
     image: zen12/rethinkdb-cluster
     environment:
-      - "JOIN=rethinkdb1"
-      - "RETHINKARGS=--server-tag rethinkdb3 --server-name rethinkdb3 --bind all"
+      - "JOIN=rethinkdb1,rethinkdb2,rethinkdb3,rethinkdb4,rethinkdb5"
+      - "RETHINKARGS=--server-tag rethinkdb3 --server-name rethinkdb3"
     hostname: rethinkdb3
     volumes:
       - /datavol/rethinkdb/db3:/data
@@ -54,8 +54,8 @@ services:
   rethinkdb4:
     image: zen12/rethinkdb-cluster
     environment:
-      - "JOIN=rethinkdb1"
-      - "RETHINKARGS=--server-tag rethinkdb4 --server-name rethinkdb4 --bind all"
+      - "JOIN=rethinkdb1,rethinkdb2,rethinkdb3,rethinkdb4,rethinkdb5"
+      - "RETHINKARGS=--server-tag rethinkdb4 --server-name rethinkdb4"
     hostname: rethinkdb4
     volumes:
       - /datavol/rethinkdb/db4:/data
@@ -67,8 +67,8 @@ services:
   rethinkdb5:
     image: zen12/rethinkdb-cluster
     environment:
-      - "JOIN=rethinkdb1"
-      - "RETHINKARGS=--server-tag rethinkdb5 --server-name rethinkdb5 --bind all"
+      - "JOIN=rethinkdb1,rethinkdb2,rethinkdb3,rethinkdb4,rethinkdb5"
+      - "RETHINKARGS=--server-tag rethinkdb5 --server-name rethinkdb5"
     hostname: rethinkdb5
     volumes:
       - /datavol/rethinkdb/db5:/data

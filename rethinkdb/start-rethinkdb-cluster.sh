@@ -17,7 +17,7 @@ cmd="$@"
 if [ ${#cmd} -ge 1 ]; then
 	exec "$@"
 else
-	canonical_address=$(hostname -i)
+	canonical_address=$(hostname)
 
 	echo "canonical_address: ${canonical_address}"
 
