@@ -15,7 +15,7 @@ services:
   rethinkdb1:
     image: zen12/rethinkdb-cluster
     environment:
-      - "JOIN=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb4;rethinkdb5"
+      - "JOIN=rethinkdb1"
       - "RETHINKARGS=--server-tag rethinkdb1 --server-name rethinkdb1"
     hostname: rethinkdb1
     volumes:
@@ -28,7 +28,7 @@ services:
   rethinkdb2:
     image: zen12/rethinkdb-cluster
     environment:
-      - "JOIN=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb4;rethinkdb5"
+      - "JOIN=rethinkdb1"
       - "RETHINKARGS=--server-tag rethinkdb2 --server-name rethinkdb2"
     hostname: rethinkdb2
     volumes:
@@ -41,7 +41,7 @@ services:
   rethinkdb3:
     image: zen12/rethinkdb-cluster
     environment:
-      - "JOIN=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb4;rethinkdb5"
+      - "JOIN=rethinkdb1"
       - "RETHINKARGS=--server-tag rethinkdb3 --server-name rethinkdb3"
     hostname: rethinkdb3
     volumes:
@@ -54,7 +54,7 @@ services:
   rethinkdb4:
     image: zen12/rethinkdb-cluster
     environment:
-      - "JOIN=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb4;rethinkdb5"
+      - "JOIN=rethinkdb1"
       - "RETHINKARGS=--server-tag rethinkdb4 --server-name rethinkdb4"
     hostname: rethinkdb4
     volumes:
@@ -67,7 +67,7 @@ services:
   rethinkdb5:
     image: zen12/rethinkdb-cluster
     environment:
-      - "JOIN=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb4;rethinkdb5"
+      - "JOIN=rethinkdb1"
       - "RETHINKARGS=--server-tag rethinkdb5 --server-name rethinkdb5"
     hostname: rethinkdb5
     volumes:
