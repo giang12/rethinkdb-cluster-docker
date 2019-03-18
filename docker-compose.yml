@@ -16,7 +16,7 @@ services:
     image: zen12/rethinkdb-cluster
     environment:
       - "DBCLUSTERHOSTS=rethinkdb2;rethinkdb3;rethinkdb4;rethinkdb5"
-      - "RETHINKARGS=--server-tag primary --server-name rethinkdb1 --bind all"
+      - "RETHINKARGS=--server-tag rethinkdb1 --server-name rethinkdb1 --bind all"
     hostname: rethinkdb1
     volumes:
       - /datavol/rethinkdb/db1:/data/rethinkdb_data
@@ -31,7 +31,7 @@ services:
     image: zen12/rethinkdb-cluster
     environment:
       - "DBCLUSTERHOSTS=rethinkdb1;rethinkdb3;rethinkdb4;rethinkdb5"
-      - "RETHINKARGS=--server-tag primary --server-name rethinkdb2 --bind all"
+      - "RETHINKARGS=--server-tag rethinkdb2 --server-name rethinkdb2 --bind all"
     hostname: rethinkdb2
     volumes:
       - /datavol/rethinkdb/db2:/data/rethinkdb_data
@@ -46,7 +46,7 @@ services:
     image: zen12/rethinkdb-cluster
     environment:
       - "DBCLUSTERHOSTS=rethinkdb1;rethinkdb2;rethinkdb4;rethinkdb5"
-      - "RETHINKARGS=--server-tag primary --server-name rethinkdb3 --bind all"
+      - "RETHINKARGS=--server-tag rethinkdb3 --server-name rethinkdb3 --bind all"
     hostname: rethinkdb3
     volumes:
       - /datavol/rethinkdb/db3:/data/rethinkdb_data
@@ -61,7 +61,7 @@ services:
     image: zen12/rethinkdb-cluster
     environment:
       - "DBCLUSTERHOSTS=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb5"
-      - "RETHINKARGS=--server-tag primary --server-name rethinkdb4 --bind all"
+      - "RETHINKARGS=--server-tag rethinkdb4 --server-name rethinkdb4 --bind all"
     hostname: rethinkdb4
     volumes:
       - /datavol/rethinkdb/db4:/data/rethinkdb_data
@@ -76,7 +76,7 @@ services:
     image: zen12/rethinkdb-cluster
     environment:
       - "DBCLUSTERHOSTS=rethinkdb1;rethinkdb2;rethinkdb3;rethinkdb4"
-      - "RETHINKARGS=--server-tag primary --server-name rethinkdb5 --bind all"
+      - "RETHINKARGS=--server-tag rethinkdb5 --server-name rethinkdb5 --bind all"
     hostname: rethinkdb5
     volumes:
       - /datavol/rethinkdb/db5:/data/rethinkdb_data
